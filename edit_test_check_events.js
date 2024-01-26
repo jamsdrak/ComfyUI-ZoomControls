@@ -12,6 +12,7 @@ function isKeyPressed(event) {
 
 
 
+(just logical thinking)
 if x press (
 
     check mouse event for mousedown (
