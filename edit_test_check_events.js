@@ -1,17 +1,3 @@
-
-function isKeyPressed(event) {
-  let text = "";
-  if (event.ctrlKey) {
-    text = "The Ctrl key was pressed!";
-  } else {
-    text = "The Ctrl key was NOT pressed!";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-
-
-
-
 (just logical thinking)
 if x key press (
 
@@ -56,6 +42,18 @@ if x key press (
 )
 
 
+
+
+
+function isKeyPressed(event) {
+  let text = "";
+  if (event.ctrlKey) {
+    text = "The Ctrl key was pressed!";
+  } else {
+    text = "The Ctrl key was NOT pressed!";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
 
 
     
