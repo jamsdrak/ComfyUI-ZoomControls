@@ -1,4 +1,60 @@
 
+function isKeyPressed(event) {
+  let text = "";
+  if (event.ctrlKey) {
+    text = "The Ctrl key was pressed!";
+  } else {
+    text = "The Ctrl key was NOT pressed!";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+
+
+
+
+if x press (
+
+    check mouse event for mousedown (
+
+        if clear (
+
+            check mosue event for movement (
+
+                if movement (
+
+                    set origin point, mesuere mouse movement, set value only positive value set
+
+
+                    on value increases (
+
+                        zoom out
+
+                        on click let go end function
+                        on mouse leave canvas end funtion
+                        
+                    ) else (
+
+                        restore canvas scale
+                        
+                    )                   
+    
+                )            
+    
+            ) else (
+
+    
+            )
+    
+        ) else (
+    
+        )
+    
+    )
+    
+    
+)
+
+
 
 
     
