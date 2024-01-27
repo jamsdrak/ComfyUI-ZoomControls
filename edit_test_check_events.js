@@ -1,4 +1,8 @@
-(just logical thinking)
+// samples openart.ai
+// framework-3c2b2ea11736477d.js    -   work for a custom zoom buttons         -       function dJ() {}      even listener
+
+
+// (just logical thinking)
 if x key press (
 
     check mouse event for mousedown (
