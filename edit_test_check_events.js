@@ -4,14 +4,14 @@
 
 
 
-//     NEED TO EDIT THIS TO ADD below to add   more event listenenr for button scale with arrows key
+//     CHECK TO EDIT THIS TO ADD below to add   more event listenenr for button scale with arrows key
 //*********************************************************************************************************************
 //*********************************************************************************************************************
 
 
 
 
-    //****************************************
+   //****************************************
 
     //Scale and Offset
     function DragAndScale(element, skip_events) {
@@ -149,6 +149,88 @@
 		}
     };
 
+    DragAndScale.prototype.toCanvasContext = function(ctx) {
+        ctx.scale(this.scale, this.scale);
+        ctx.translate(this.offset[0], this.offset[1]);
+    };
+
+    DragAndScale.prototype.convertOffsetToCanvas = function(pos) {
+        //return [pos[0] / this.scale - this.offset[0], pos[1] / this.scale - this.offset[1]];
+        return [
+            (pos[0] + this.offset[0]) * this.scale,
+            (pos[1] + this.offset[1]) * this.scale
+        ];
+    };
+
+    DragAndScale.prototype.convertCanvasToOffset = function(pos, out) {
+        out = out || [0, 0];
+        out[0] = pos[0] / this.scale - this.offset[0];
+        out[1] = pos[1] / this.scale - this.offset[1];
+        return out;
+    };
+
+    DragAndScale.prototype.mouseDrag = function(x, y) {
+        this.offset[0] += x / this.scale;
+        this.offset[1] += y / this.scale;
+
+        if (this.onredraw) {
+            this.onredraw(this);
+        }
+    };
+
+    DragAndScale.prototype.changeScale = function(value, zooming_center) {
+        if (value < this.min_scale) {
+            value = this.min_scale;
+        } else if (value > this.max_scale) {
+            value = this.max_scale;
+        }
+
+        if (value == this.scale) {
+            return;
+        }
+
+        if (!this.element) {
+            return;
+        }
+
+        var rect = this.element.getBoundingClientRect();
+        if (!rect) {
+            return;
+        }
+
+        zooming_center = zooming_center || [
+            rect.width * 0.5,
+            rect.height * 0.5
+        ];
+        var center = this.convertCanvasToOffset(zooming_center);
+        this.scale = value;
+        if (Math.abs(this.scale - 1) < 0.01) {
+            this.scale = 1;
+        }
+
+        var new_center = this.convertCanvasToOffset(zooming_center);
+        var delta_offset = [
+            new_center[0] - center[0],
+            new_center[1] - center[1]
+        ];
+
+        this.offset[0] += delta_offset[0];
+        this.offset[1] += delta_offset[1];
+
+        if (this.onredraw) {
+            this.onredraw(this);
+        }
+    };
+
+    DragAndScale.prototype.changeDeltaScale = function(value, zooming_center) {
+        this.changeScale(this.scale * value, zooming_center);
+    };
+
+    DragAndScale.prototype.reset = function() {
+        this.scale = 1;
+        this.offset[0] = 0;
+        this.offset[1] = 0;
+    };
 
 
 
