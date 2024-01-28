@@ -3,10 +3,29 @@
 
 
 
+const onKeyPressZoom = (callback) => {
+  document.addEventListener('keydown', (e) => {
+    const key = e.key; // "a", "1", "Shift", etc.
+    if (key === '1' || key === '2') {
+      callback(key);
+    }
+  });
+};
+
+onKeyPressZoom((key) => {
+  if (key === '1') {
+    console.log(`The key ${key} was pressed`);
+  } else if (key === '2') {
+    alert(`The key ${key} was pressed`);
+  }
+});
+
 
 //     CHECK TO EDIT THIS TO ADD below to add   more event listenenr for button scale with arrows key
 //*********************************************************************************************************************
 //*********************************************************************************************************************
+
+
 
 
 
@@ -57,10 +76,10 @@
 //
 //
 // Register a keybinding for 1(zoomIN) and 2(zoomOut) 
-
-	DragAndScale.prototype.keyPressZoom = function() 
+/*
+	DragAndScale.prototype.keyPressZoom = function(element) 
 	
-		document.addEventListener("keydown", function(event) {
+		element.addEventListener("keydown", function(event) {
 			// zoomIN
 			if (event.keyCode == 49) {
 
@@ -77,16 +96,14 @@
 				//document.getElementById("demo").innerHTML = "You pressed a key 2";
 			}
 		});
-	
-
-	
-
 	};
 
-
+*/
 //
 //
 //****************************************************
+
+
 
 
     DragAndScale.prototype.computeVisibleArea = function( viewport ) {
@@ -122,6 +139,9 @@
         var rect = canvas.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
+
+	var keydown = this.element.addEventListener("keydown", function(event) {
+	    
         e.canvasx = x;
         e.canvasy = y;
         e.dragging = this.dragging;
@@ -153,10 +173,14 @@
 			LiteGraph.pointerListenerRemove(document,"move",this._binded_mouse_callback);
 			LiteGraph.pointerListenerRemove(document,"up",this._binded_mouse_callback);
 			LiteGraph.pointerListenerAdd(canvas,"move",this._binded_mouse_callback);
-/*
+
+//********************
 
 //  ZoomIN
-        } else if (event.keyCode == 49) {
+        } else if (
+		this.element.addEventListener("keydown", function(event) {
+		event.keyCode == 49
+	) {
 		//
 		this.changeScale(this.scale * value, zooming_center);
 
@@ -166,8 +190,8 @@
 		//
 		this.changeScale(this.scale * value, zooming_center);
 
+//*****************
 
-*/
 	} else if ( is_inside &&
             (e.type == "mousewheel" ||
             e.type == "wheel" ||
