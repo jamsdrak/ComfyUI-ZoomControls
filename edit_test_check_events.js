@@ -51,20 +51,30 @@
         );
         element.addEventListener("wheel", this._binded_mouse_callback, false);
     };
+
+
+//******************************************************
+//
+//
 // Register a keybinding for 1(zoomIN) and 2(zoomOut) 
 
 	DragAndScale.prototype.keyPressZoom = function() 
 	
-		document.addEventListener("keypress", function(event) {
+		document.addEventListener("keydown", function(event) {
 			// zoomIN
 			if (event.keyCode == 49) {
-			
-				document.getElementById("demo").innerHTML = "You pressed a key 1";
+
+				this.changeScale(this.scale * value, -60);
+
+				
+				//document.getElementById("demo").innerHTML = "You pressed a key 1";
 			} 
 			// zoomOUT
 			else if (event.keyCode == 50) {
-			
-				document.getElementById("demo").innerHTML = "You pressed a key 2";
+
+				//this.changeScale(this.scale * value, zooming_center);
+				
+				//document.getElementById("demo").innerHTML = "You pressed a key 2";
 			}
 		});
 	
@@ -74,10 +84,8 @@
 	};
 
 
-
-
-
-
+//
+//
 //****************************************************
 
 
@@ -145,7 +153,22 @@
 			LiteGraph.pointerListenerRemove(document,"move",this._binded_mouse_callback);
 			LiteGraph.pointerListenerRemove(document,"up",this._binded_mouse_callback);
 			LiteGraph.pointerListenerAdd(canvas,"move",this._binded_mouse_callback);
-        } else if ( is_inside &&
+/*
+
+//  ZoomIN
+        } else if (event.keyCode == 49) {
+		//
+		this.changeScale(this.scale * value, zooming_center);
+
+
+//  ZoomOUT
+	} else if (event.keyCode == 50) {
+		//
+		this.changeScale(this.scale * value, zooming_center);
+
+
+*/
+	} else if ( is_inside &&
             (e.type == "mousewheel" ||
             e.type == "wheel" ||
             e.type == "DOMMouseScroll")
