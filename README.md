@@ -1,4 +1,5 @@
 JUST GONA ADD BASIC two press key for ZoomIN(1) and ZoomOUT(2). just simple code to be added to file "litegraph.core.js". 
+will update how after testing
 
 
 Only Editing the files necesaries to implement the Zoom controls in ComfyUI. For testing and for future import change for pulls into ComfyUi or as a separetly addon. Also maybe the idea of implementing some basic Navigation controls with the arrow keys and a button layout in the comfy-menu
