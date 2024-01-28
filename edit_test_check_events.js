@@ -51,6 +51,35 @@
         );
         element.addEventListener("wheel", this._binded_mouse_callback, false);
     };
+// Register a keybinding for 1(zoomIN) and 2(zoomOut) 
+
+	DragAndScale.prototype.keyPressZoom = function() 
+	
+		document.addEventListener("keypress", function(event) {
+			// zoomIN
+			if (event.keyCode == 49) {
+			
+				document.getElementById("demo").innerHTML = "You pressed a key 1";
+			} 
+			// zoomOUT
+			else if (event.keyCode == 50) {
+			
+				document.getElementById("demo").innerHTML = "You pressed a key 2";
+			}
+		});
+	
+
+	
+
+	};
+
+
+
+
+
+
+//****************************************************
+
 
     DragAndScale.prototype.computeVisibleArea = function( viewport ) {
         if (!this.element) {
