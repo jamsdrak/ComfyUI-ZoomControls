@@ -1,6 +1,9 @@
 JUST GONA ADD BASIC two press key for ZoomIN(1) and ZoomOUT(2). just simple code to be added to file "litegraph.core.js". 
 will update how after testing
 
+well i can't seem to figure out why when i zoom using the keybind snaps to a node corner and the canvas crashes, still testing, the code has to many kwydown calls from varius files and twice in one, really weird
+
+
 
 
 
