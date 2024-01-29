@@ -1,3 +1,67 @@
+mostly using mousewheel code from lib and still acts weaird
+app.js
+inside 
+#addProcessKeyHandler() {
+		const self = this;
+		const origProcessKey = LGraphCanvas.prototype.processKey;
+		LGraphCanvas.prototype.processKey = function(e) {
+
+///////////
+		this.adjustMouseEvent(e);
+
+			var x = e.clientX;
+			var y = e.clientY;
+			console.log(x," ",y);
+			var is_inside = !this.viewport || ( this.viewport && x >= this.viewport[0] && x < (this.viewport[0] + this.viewport[2]) && y >= this.viewport[1] && y < (this.viewport[1] + this.viewport[3]) );
+			if(!is_inside)
+				return;
+
+	        var scale = this.ds.scale;
+/////////////
+
+			
+if (e.key === '1' || e.key === '2') {
+
+		var delta = 0;
+		console.log(delta);
+// Zoom IN key 1
+		if (e.key === '1') {
+			// Trigger onCopy
+			//alert("key 1 pressed app");
+			//console.log("key 1 pressed app");
+
+			delta = 120;
+			//return true;
+		}
+// Zoom OUT key 2
+		if (e.key === '2') {
+			// Trigger onCopy
+			//alert("key 2 pressed app");
+			//console.log("key 2 pressed app");
+			delta = -120;
+
+			//return true;
+		}
+		//console.log(delta);
+
+	if (delta > 0) {
+	    scale *= 1.1;
+	} else if (delta < 0) {
+	    scale *= 1 / 1.1;
+	}
+
+	//this.setZoom( scale, [ e.clientX, e.clientY ] );
+	this.ds.changeScale(scale, [e.clientX, e.clientY]);
+	this.graph.change();
+
+	e.preventDefault();
+	return false;
+
+}
+
+
+
+
 // samples openart.ai
 // framework-3c2b2ea11736477d.js    -   work for a custom zoom buttons         -       function dJ() {}      even listener
 
