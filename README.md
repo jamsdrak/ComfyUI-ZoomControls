@@ -3,7 +3,7 @@ will update how after testing
 
 well i can't seem to figure out why when i zoom using the keybind snaps to a node corner and the canvas crashes, still testing, the code has to many kwydown calls from varius files and twice in one, really weird
 
-![chrome_mkeqx0al4e](https://github.com/jamsdrak/ComfyUI-ZoomControls/assets/135140984/b40e7560-6d57-49d0-99dc-559c988c12f2)
+![44142no](https://github.com/jamsdrak/ComfyUI-ZoomControls/assets/135140984/dca8b2a3-7f96-44e7-bbca-f36e2caebff2)
 
 Solve the corner issue, but Can't figure out why the canvas freezes it does zoom but is freez (the grid dissapiers, and everything inside turns into a jpg basically)
 
