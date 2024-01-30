@@ -7,6 +7,7 @@ well i can't seem to figure out why when i zoom using the keybind snaps to a nod
 
 Solve the corner issue, but Can't figure out why the canvas freezes it does zoom but is freez (the grid dissapiers, and everything inside turns into a jpg basically)
 
+trying not to change to much code, adjustMouseEvent...
 
 
 
